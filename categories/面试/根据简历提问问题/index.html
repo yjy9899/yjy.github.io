@@ -407,7 +407,8 @@
 <p><strong>4、线程安全</strong></p>
 <p>因为不可变对象是不可以改变的，它能够被多个线程自由的共享。这消除了同步。<br><strong>总结，String被设计成不可以更改的是为了效率和安全。这也是为什么现在很多不可以改变的类。</strong></p>
 
-<h2 id="如何处理文本数据"><a href="#如何处理文本数据" class="headerlink" title="如何处理文本数据"></a>你提到了使用Jieba分词技术和自然语言处理技术来从CVE描述字段中提取攻击有关的实体。具体来说，你是如何处理这个文本数据的？</h2><ul>
+<h2 id="如何处理文本数据"><a href="#如何处理文本数据" class="headerlink" title="如何处理文本数据"></a>你提到了使用Jieba分词技术和自然语言处理技术来从CVE描述字段中提取攻击有关的实体。具体来说，你是如何处理这个文本数据的？</h2>
+<ul>
 <li>对象类型不同，equals()是超类Object中的方法，==是操作符</li>
 <li>比较的对象不同，equals用来检测两个对象是否相等，即两个对象的内容是否相等，==在基础数据类型比较的是值是否相等，引用数据类型比较的是引用地址是否相等。</li>
 <li>运行速度不用，equals要慢与==</li>
@@ -415,10 +416,9 @@
 
 <h2 id="如何确保稳定性和准确性"><a href="#如何确保稳定性和准确性" class="headerlink" title="如何确保稳定性和准确性"></a>作为基于大数据的就业岗位分析预测平台的测试开发人员，你在需求分析评审和测试方面扮演了什么样的角色？能分享一下你是如何确保项目的准确性和稳定性的？</p>
 <ul>
-<li>JDBC连接数据库时使用 Class.forName() 通过反射加载数据库的驱动程序 </li>
-<li>Eclispe、IDEA等开发工具利用反射动态解析对象的类型与结构，动态提示对象的属性和方法 </li>
-<li>Web服务器中利用反射调用了Sevlet的 service 方法</li>
-<li>JDK动态代理底层依赖反射实现</li>
+<li>对象类型不同，equals()是超类Object中的方法，==是操作符</li>
+<li>比较的对象不同，equals用来检测两个对象是否相等，即两个对象的内容是否相等，==在基础数据类型比较的是值是否相等，引用数据类型比较的是引用地址是否相等。</li>
+<li>运行速度不用，equals要慢与==</li>
 </ul>
 <!-- <h2 id="Java创建对象的方式"><a href="#Java创建对象的方式" class="headerlink" title="Java创建对象的方式"></a>Java创建对象的方式</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.通过new申请对象空间（堆内存）</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.通过Class类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person) clazz.newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通过Constructor类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">claqq</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Constructor</span> <span class="variable">con</span> <span class="operator">=</span> claqq.getConstructor(String.class);</span><br><span class="line"><span class="type">Person</span> <span class="variable">per</span> <span class="operator">=</span> (Person) con.newInstance(<span class="string">"zzt"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.通过Object类中的clone()方法</span></span><br><span class="line"><span class="comment">//类对象，实现实现Cloneable接口</span></span><br><span class="line"><span class="comment">//不会执行构造方法</span></span><br><span class="line"><span class="comment">//设计模式  ------&gt;Prototype原型模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//5.通过对象的反序列化</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(fileInputStream);</span><br><span class="line"><span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> (Person) ois.readObject();</span><br></pre></td></tr></tbody></table></figure> -->
 
