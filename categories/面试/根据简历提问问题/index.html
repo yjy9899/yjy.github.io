@@ -365,12 +365,14 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
 <h2 id="爬虫获取职业信息"><a href="#爬虫获取职业信息" class="headerlink" title="爬虫获取职业信息"></a>在基于大数据的就业岗位分析预测平台项目中，你提到了使用爬虫技术和Web开发技术。具体来说，你是如何设计和实现爬虫来获取职业信息的？在可视化展示方面，你采用了什么技术和工具？</h2>
-<p>减少CPU运算</p>
-<p>数组在内存中是一段连续的空间，并且支持随机访问。</p>
-<p>访问数组a中第i号位置的元素时，需要找到的地址是<code>base_address + i * data_type_size</code></p>
-<p>如果下标从1开始，数组a中第i号位置的元素的地址就是<code>base_address + （i - 1）* data_type_size</code></p>
-<p>可以看出，下标从0开始，寻址的时候可以减少一次减法运算。</p>
-
+<p>确定目标：网站的URL，要爬取的内容（职业名称，职业薪资，公司名称，公司人数），爬取工具（BeautifulSoup）</p>
+<p>确定需要抓取的数据在页面中的位置，获取网页的HTML代码，使用request库方法（get/read）获取</p>
+<p>使用工具解析HTML页面</p>
+<p>设置爬虫速率，避免对服务器造成过大的负载</p>
+<p>爬取数据，使用BeautifulSoup的find/find_all方法。<code>list_soup = soup.find('div', {'class': 'mod book-list'})</code>（找到所有class为mod book-list的div元素）</p>
+<p><strong>在可视化展示方面采用的工具和技术</strong></p>
+<p>使用工具解析HTML页面</p>
+	    
 <h2 id="GCN和TransE在项目中的应用"><a href="#GCN和TransE在项目中的应用" class="headerlink" title="GCN和TransE在项目中的应用"></a>在基于攻击知识图谱的网络攻击场景重构及推理项目中，你使用了图卷积神经网络和TransE模型。能否详细介绍一下这两个模型在你的项目中的应用，以及它们是如何帮助攻击预测和推理的？</h2><p>for与foreach都可以遍历数组/集合，不过for则在较复杂的循环中效率更高。</p>
 <p>foreach不可以删除/修改集合元素，而for可以</p>
 <p>foreach和for都可以修改元素里面的属性</p>
