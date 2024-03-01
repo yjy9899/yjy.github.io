@@ -364,17 +364,19 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="数组下标为什么是从零开始的"><a href="#数组下标为什么是从零开始的" class="headerlink" title="数组下标为什么是从零开始的"></a>在基于大数据的就业岗位分析预测平台项目中，你提到了使用爬虫技术和Web开发技术。具体来说，你是如何设计和实现爬虫来获取职业信息的？在可视化展示方面，你采用了什么技术和工具？</h2>
+<h2 id="爬虫获取职业信息"><a href="#爬虫获取职业信息" class="headerlink" title="爬虫获取职业信息"></a>在基于大数据的就业岗位分析预测平台项目中，你提到了使用爬虫技术和Web开发技术。具体来说，你是如何设计和实现爬虫来获取职业信息的？在可视化展示方面，你采用了什么技术和工具？</h2>
 <p>减少CPU运算</p>
 <p>数组在内存中是一段连续的空间，并且支持随机访问。</p>
 <p>访问数组a中第i号位置的元素时，需要找到的地址是<code>base_address + i * data_type_size</code></p>
 <p>如果下标从1开始，数组a中第i号位置的元素的地址就是<code>base_address + （i - 1）* data_type_size</code></p>
 <p>可以看出，下标从0开始，寻址的时候可以减少一次减法运算。</p>
-<h2 id="for和foreach有什么区别"><a href="#for和foreach有什么区别" class="headerlink" title="for和foreach有什么区别"></a>在基于攻击知识图谱的网络攻击场景重构及推理项目中，你使用了图卷积神经网络和TransE模型。能否详细介绍一下这两个模型在你的项目中的应用，以及它们是如何帮助攻击预测和推理的？</h2><p>for与foreach都可以遍历数组/集合，不过for则在较复杂的循环中效率更高。</p>
+
+<h2 id="GCN和TransE在项目中的应用"><a href="#GCN和TransE在项目中的应用" class="headerlink" title="GCN和TransE在项目中的应用"></a>在基于攻击知识图谱的网络攻击场景重构及推理项目中，你使用了图卷积神经网络和TransE模型。能否详细介绍一下这两个模型在你的项目中的应用，以及它们是如何帮助攻击预测和推理的？</h2><p>for与foreach都可以遍历数组/集合，不过for则在较复杂的循环中效率更高。</p>
 <p>foreach不可以删除/修改集合元素，而for可以</p>
 <p>foreach和for都可以修改元素里面的属性</p>
 <p>foreach会引发并发修改异常ConcurrentModificationException</p>
-<h2 id="foreach底层原理"><a href="#foreach底层原理" class="headerlink" title="foreach底层原理"></a>foreach底层原理</h2><p><strong>数组</strong></p>
+
+<!-- <h2 id="foreach底层原理"><a href="#foreach底层原理" class="headerlink" title="foreach底层原理"></a>foreach底层原理</h2><p><strong>数组</strong></p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs=  <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(String str : strs){</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>编译后</p>
@@ -387,8 +389,10 @@
 
 <p>编译后</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">var2</span> <span class="operator">=</span> list.iterator();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (Integer)var2.next();</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+ -->
 
-<h2 id="String-类能不能被继承？为什么？"><a href="#String-类能不能被继承？为什么？" class="headerlink" title="String 类能不能被继承？为什么？"></a>String 类能不能被继承？为什么？</h2><p><strong>不能</strong>，因为String类是被final修饰的类型，final类是不能被继承的，String类是不可变类型(Immutable)类。</p>
+<h2 id="使用技术栈时的挑战和克服"><a href="#使用技术栈时的挑战和克服" class="headerlink" title="使用技术栈时的挑战和克服"></a>在两个项目中，你都涉及到了不同的技术栈，包括Python、Java、MySQL、Tomcat等。在处理这些技术时，你遇到了哪些挑战，又是如何克服的？</h2>
+<p><strong>不能</strong>，因为String类是被final修饰的类型，final类是不能被继承的，String类是不可变类型(Immutable)类。</p>
 <p><strong>1、字符串常量池的需要</strong></p>
 <p>字符串池（字符串内部池） 是在方法区域的特殊区域。当一个string被创建如果这个string已经在内存里面存在了，那个存在的string的引用被返回，而不是创建个新的对象和返回它的引用。<br>下面的代码将在堆上创建一个string对象。</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">string1</span> <span class="operator">=</span> <span class="string">"abcd"</span>; </span><br><span class="line"><span class="type">String</span> <span class="variable">string2</span> <span class="operator">=</span> <span class="string">"abcd"</span>;</span><br></pre></td></tr></tbody></table></figure>
@@ -402,12 +406,14 @@
 <p>网络连接地址URL,文件路径path通常情况下都是以String类型保存, 假若String不是固定不变的,将会引起各种安全隐患。就好比我们的密码不能以String的类型保存，，如果你将密码以明文的形式保存成字符串，那么它将一直留在内存中，直到垃圾收集器把它清除。而由于字符串被放在字符串缓冲池中以方便重复使用，所以它就可能在内存中被保留很长时间，而这将导致安全隐患</p>
 <p><strong>4、线程安全</strong></p>
 <p>因为不可变对象是不可以改变的，它能够被多个线程自由的共享。这消除了同步。<br><strong>总结，String被设计成不可以更改的是为了效率和安全。这也是为什么现在很多不可以改变的类。</strong></p>
-<h2 id="x3D-x3D-和-equals-的区别？"><a href="#x3D-x3D-和-equals-的区别？" class="headerlink" title="== 和 equals() 的区别？"></a>== 和 equals() 的区别？</h2><ul>
+
+<h2 id="如何处理文本数据"><a href="#如何处理文本数据" class="headerlink" title="如何处理文本数据"></a>你提到了使用Jieba分词技术和自然语言处理技术来从CVE描述字段中提取攻击有关的实体。具体来说，你是如何处理这个文本数据的？</h2><ul>
 <li>对象类型不同，equals()是超类Object中的方法，==是操作符</li>
 <li>比较的对象不同，equals用来检测两个对象是否相等，即两个对象的内容是否相等，==在基础数据类型比较的是值是否相等，引用数据类型比较的是引用地址是否相等。</li>
 <li>运行速度不用，equals要慢与==</li>
 </ul>
-<h2 id="简述-Java-的反射机制及其应用场景"><a href="#简述-Java-的反射机制及其应用场景" class="headerlink" title="简述 Java 的反射机制及其应用场景"></a>简述 Java 的反射机制及其应用场景</h2><p>动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。 在运行状态中，对于任意一个类，能够知道这个类的所有属性和方法。对于任意一个对象，能够调用它的任意一个方法和属性。</p>
+
+<h2 id="如何确保稳定性和准确性"><a href="#如何确保稳定性和准确性" class="headerlink" title="如何确保稳定性和准确性"></a>作为基于大数据的就业岗位分析预测平台的测试开发人员，你在需求分析评审和测试方面扮演了什么样的角色？能分享一下你是如何确保项目的准确性和稳定性的？</p>
 <p><strong>应用场景</strong></p>
 <ul>
 <li>JDBC连接数据库时使用 Class.forName() 通过反射加载数据库的驱动程序 </li>
@@ -415,9 +421,10 @@
 <li>Web服务器中利用反射调用了Sevlet的 service 方法</li>
 <li>JDK动态代理底层依赖反射实现</li>
 </ul>
-<h2 id="Java创建对象的方式"><a href="#Java创建对象的方式" class="headerlink" title="Java创建对象的方式"></a>Java创建对象的方式</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.通过new申请对象空间（堆内存）</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.通过Class类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person) clazz.newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通过Constructor类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">claqq</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Constructor</span> <span class="variable">con</span> <span class="operator">=</span> claqq.getConstructor(String.class);</span><br><span class="line"><span class="type">Person</span> <span class="variable">per</span> <span class="operator">=</span> (Person) con.newInstance(<span class="string">"zzt"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.通过Object类中的clone()方法</span></span><br><span class="line"><span class="comment">//类对象，实现实现Cloneable接口</span></span><br><span class="line"><span class="comment">//不会执行构造方法</span></span><br><span class="line"><span class="comment">//设计模式  ------&gt;Prototype原型模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//5.通过对象的反序列化</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(fileInputStream);</span><br><span class="line"><span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> (Person) ois.readObject();</span><br></pre></td></tr></tbody></table></figure>
+<!-- <h2 id="Java创建对象的方式"><a href="#Java创建对象的方式" class="headerlink" title="Java创建对象的方式"></a>Java创建对象的方式</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.通过new申请对象空间（堆内存）</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.通过Class类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person) clazz.newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通过Constructor类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">claqq</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Constructor</span> <span class="variable">con</span> <span class="operator">=</span> claqq.getConstructor(String.class);</span><br><span class="line"><span class="type">Person</span> <span class="variable">per</span> <span class="operator">=</span> (Person) con.newInstance(<span class="string">"zzt"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.通过Object类中的clone()方法</span></span><br><span class="line"><span class="comment">//类对象，实现实现Cloneable接口</span></span><br><span class="line"><span class="comment">//不会执行构造方法</span></span><br><span class="line"><span class="comment">//设计模式  ------&gt;Prototype原型模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//5.通过对象的反序列化</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(fileInputStream);</span><br><span class="line"><span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> (Person) ois.readObject();</span><br></pre></td></tr></tbody></table></figure> -->
 
-<h2 id="String最大长度是多少？"><a href="#String最大长度是多少？" class="headerlink" title="String最大长度是多少？"></a>String最大长度是多少？</h2><p>String类提供了一个length方法，返回值为int类型，而int的取值上限为2^31 -1。所以理论上String的最大长度为2^31 -1。 </p>
+<h2 id="项目遇到的最大挑战以及如何解决"><a href="#项目遇到的最大挑战以及如何解决" class="headerlink" title="项目遇到的最大挑战以及如何解决"></a>在项目中肯定会遇到一些挑战，可以分享一下你在项目中面对的最大挑战是什么，以及你是如何解决的吗？</h2>
+<p>String类提供了一个length方法，返回值为int类型，而int的取值上限为2^31 -1。所以理论上String的最大长度为2^31 -1。 </p>
 <p><strong>达到这个长度的话需要多大的内存吗？</strong> </p>
 <p>String内部是使用一个char数组来维护字符序列的，一个char占用两个字节。如果说String最大长度是 2^31 -1的话，那么最大的字符串占用内存空间约等于4GB。 也就是说，我们需要有大于4GB的JVM运行内存才行。 </p>
 <p><strong>那String一般都存储在JVM的哪块区域呢？</strong> </p>
@@ -427,169 +434,19 @@
 <p>String在不同的状态下，具有不同的长度限制。 </p>
 <p>字符串常量长度不能超过2^16 - 1</p>
 <p>堆内字符串的长度不超过2^31 - 1</p>
-<h2 id="什么是字符串常量池？"><a href="#什么是字符串常量池？" class="headerlink" title="什么是字符串常量池？"></a>什么是字符串常量池？</h2><p>字符串常量池（String Pool）保存着所有字符串字面量，这些字面量在编译时期就确定。字符串常量池位于堆内存中，专门用来存储字符串常量。在创建字符串时，JVM首先会检查字符串常量池，如果该字符串已经存在池中，则返回其引用，如果不存在，则创建此字符串并放入池中，并返回其引用。</p>
-<h2 id="String，StringBuffer，StringBuilder-之间有什么区别？"><a href="#String，StringBuffer，StringBuilder-之间有什么区别？" class="headerlink" title="String，StringBuffer，StringBuilder 之间有什么区别？"></a>String，StringBuffer，StringBuilder 之间有什么区别？</h2><p>String：不可变，线程安全</p>
+
+<h2 id="深入还是广泛学习技术"><a href="#深入还是广泛学习技术" class="headerlink" title="深入还是广泛学习技术"></a>你在项目中使用了多种技术，涉及到爬虫、Web开发、图卷积神经网络等多个领域。你认为自己更倾向于深入某一领域还是保持广泛的技术涉猎？</h2>
+<p>字符串常量池（String Pool）保存着所有字符串字面量，这些字面量在编译时期就确定。字符串常量池位于堆内存中，专门用来存储字符串常量。在创建字符串时，JVM首先会检查字符串常量池，如果该字符串已经存在池中，则返回其引用，如果不存在，则创建此字符串并放入池中，并返回其引用。</p>
+
+<h2 id="String，StringBuffer，StringBuilder-之间有什么区别？"><a href="#String，StringBuffer，StringBuilder-之间有什么区别？" class="headerlink" title="String，StringBuffer，StringBuilder 之间有什么区别？"></a>可以分享一下你在研究生期间的研究方向或者深入学习的领域吗？</h2>
+<p>String：不可变，线程安全</p>
 <p>StringBuilder：可变，线程不安全</p>
 <p>StringBuffer：可变，线程安全</p>
-<h2 id="什么是内存泄漏，怎么确定内存泄漏？"><a href="#什么是内存泄漏，怎么确定内存泄漏？" class="headerlink" title="什么是内存泄漏，怎么确定内存泄漏？"></a>什么是内存泄漏，怎么确定内存泄漏？</h2><p><strong>内存泄漏</strong>：对系统申请内存使用，将其内存分配给对象使用，但内存空间使用完毕后未释放，一直占用内存空间。（长期的堆积，内存迟早被耗尽，所以今早的解决内存泄漏无疑是好事）</p>
-<p><strong>检测内存泄露</strong></p>
-<p>使用Java VisualVM</p>
-<h2 id="简述-Java-中的自动装箱与拆箱"><a href="#简述-Java-中的自动装箱与拆箱" class="headerlink" title="简述 Java 中的自动装箱与拆箱"></a>简述 Java 中的自动装箱与拆箱</h2><p> 自动装箱是 Java 编译器在基本类型和它们对应的包装类之间进行的自动转换。例如，将 int 类型转换为 Integer 类型，将 double 类型转换为 Double 型等等。如果转换以相反的方式进行，则称为开箱。</p>
-<p><strong>Integer→int</strong>，实际上是调用了方法Integer.intValue()。</p>
-<p>当我们用Integer i = xxx创建对象时，会发生自动装箱，调用Integer.valueOf()</p>
-<h2 id="hashcode-和-equals-方法的联系"><a href="#hashcode-和-equals-方法的联系" class="headerlink" title="hashcode 和 equals 方法的联系"></a>hashcode 和 equals 方法的联系</h2><p>1）如果两个对象需要相等（equals），那么它们必须有着相同的哈希码（hashCode）；</p>
-<p>2）但如果两个对象有着相同的哈希码，它们却不一定相等。</p>
-<h2 id="Java-中接口和抽象类的区别"><a href="#Java-中接口和抽象类的区别" class="headerlink" title="Java 中接口和抽象类的区别"></a>Java 中接口和抽象类的区别</h2><p>1、语法层面上的区别 </p>
-<ul>
-<li><p>抽象类可以有方法实现，而接口的方法中只能是抽象方法（Java 8 之后接口方法可以有默认实现）； </p>
-</li>
-<li><p>抽象类中的成员变量可以是各种类型的，接口中的成员变量只能是public static final类型； </p>
-</li>
-<li><p>接口中不能含有静态代码块以及静态方法，而抽象类可以有静态代码块和静态方法（Java 8之后接口可以有静态方法）； </p>
-</li>
-<li><p>一个类只能继承一个抽象类，而一个类却可以实现多个接口。</p>
-</li>
-</ul>
-<p>2、设计层面上的区别 抽象层次不同。</p>
-<ul>
-<li><p>抽象类是对整个类整体进行抽象，包括属性、行为，但是接口只是对类行为进行抽象。继承抽象类是一种”是不是”的关系，而接口实现则是 “有没有”的关系。如果一个类继承了某个抽象类，则子类必定是抽象类的种类，而接口实现则是具备不具备的关系，比如鸟是否能飞。 </p>
-</li>
-<li><p>继承抽象类的是具有相似特点的类，而实现接口的却可以不同的类。</p>
-</li>
-</ul>
-<h2 id="Java-缓冲流-buffer-的用途和原理是什么？"><a href="#Java-缓冲流-buffer-的用途和原理是什么？" class="headerlink" title="Java 缓冲流 buffer 的用途和原理是什么？"></a>Java 缓冲流 buffer 的用途和原理是什么？</h2><p>缓冲流也称为处理流，对文件或者其他目标频繁的操作，效率低，性能差。缓冲流目的是提高程序读取和写出的性能。缓冲流也分为字节缓冲流（如FileInputStream与FileOutputStream）和字符缓冲流（如FileReader与FileWriter）</p>
-<p><strong>而缓冲流的基本原理,是创建流对象时候,会创建一个内置的默认大小的缓冲区数组, 通过缓冲区读写使得性能大大提升。</strong></p>
-<h2 id="简述-Java-内置排序算法的实现原理"><a href="#简述-Java-内置排序算法的实现原理" class="headerlink" title="简述 Java 内置排序算法的实现原理"></a>简述 Java 内置排序算法的实现原理</h2><p>Collections.sort方法底层就是调用的Arrays.sort方法，所以我们只分析Arrays.sort就好。</p>
-<p>Arrays.sort(int[])方法来概述基本类型排序的基本思路如下：</p>
-<ul>
-<li>如果数组元素个数小于47个,那么使用改进的插入排序进行排序</li>
-<li>如果元素个数大于47个并且小于快速排序的阈值286个，则使用双轴快速排序进行排序</li>
-<li>如果元素个数大于286个，根据数组的无序程度来判定继续使用哪种算法，无序程度通过将数组划分为不同的有序序列的个数来判定。</li>
-<li>如果有序序列的个数大于67个,则认为原数组基本无序,则仍然使用双轴快速排序，如果小于67个，则认为原数组基本有序，使用归并排序进行排序。</li>
-</ul>
-<p>也就是说，划分出有序序列个数越多，其实原数组是越无序的。这里理解不了的同学，可以往极限想一下。一个完全有序的数组，只能划分出1个有序数组。而一个完全逆序的数组，数组size有多大，就能划分出多少个有序数组。</p>
-<p>若果是Arrays.sort(Object object)，会涉及稳定性的问题。因为快排是是不稳定的，所以当数组个数超过插入排序的阈值后，不会使用快排，而是使用归并排序。</p>
-<p>这里的稳定是指比较相等的数据在排序之后仍然按照排序之前的前后顺序排列。</p>
-<h2 id="Java-如何高效进行数组拷贝"><a href="#Java-如何高效进行数组拷贝" class="headerlink" title="Java 如何高效进行数组拷贝"></a>Java 如何高效进行数组拷贝</h2><p> 使用 Arrays.copyOf或 System.arraycopy. 本质前者是基于后者的, 两者性能相当, 前者多了2次native调用获取数组元素类型和创建数组</p>
-<h2 id="什么是重写和重载？"><a href="#什么是重写和重载？" class="headerlink" title="什么是重写和重载？"></a>什么是重写和重载？</h2><p><strong>重载(Overload)：</strong><br>（1）Overloading是一个类中多态性的一种表现，让类以统一的方式处理不同类型数据的一种手段。多个同名函数同时存在，具有不同的参数个数/类型。<br>（2）重载的时候，方法名要一样，但是参数类型和个数不一样，返回值类型可以相同，也可以不相同。无法以返回型别作为重载函数的区分标准。</p>
-<p><strong>重写（Override):</strong><br>（1） 父类与子类之间的多态性，对父类的函数进行重新定义。即在子类中定义某方法与其父类有相同的名称和参数。<br>（2）若子类中的方法与父类中的某一方法具有相同的方法名、返回类型和参数表，则新方法将覆盖原有的方法。如需父类中原有的方法，可使用super关键字，该关键字引用了当前类的父类。</p>
-<h2 id="简述-Java-中-final-关键字的作用"><a href="#简述-Java-中-final-关键字的作用" class="headerlink" title="简述 Java 中 final 关键字的作用"></a>简述 Java 中 final 关键字的作用</h2><p>inal的意思是最终，不可变的。是一个修饰符，可用来修饰类、类的成员以及局部变量；</p>
-<ul>
-<li>final修饰的类，该类不能被继承<ul>
-<li>被final修饰的类，final类中的成员变量可以根据自己的实际需要设计为final；</li>
-<li>被final修饰的类，final类中的成员方法都会被隐式的指定为final方法；</li>
-<li>在JDK中，被设计为final类的有String、System。</li>
-</ul>
-</li>
-<li>被final修饰的方法不能被重写<ul>
-<li>注：类的private方法会隐式地被指定为final方法。</li>
-</ul>
-</li>
-<li>final修饰的变量叫常量，常量必须初始化，初始化之后就不能被修改。</li>
-</ul>
-<h2 id="简述-Java-的序列化和使用场景"><a href="#简述-Java-的序列化和使用场景" class="headerlink" title="简述 Java 的序列化和使用场景"></a>简述 Java 的序列化和使用场景</h2><p><strong>序列化：</strong>指把堆内存中的 Java 对象数据，通过某种方式把对象存储到磁盘文件中或者传递给其他网络节点（在网络上传输）。这个过程称为序列化。通俗来说就是将数据结构或对象转换成二进制数据流的过程</p>
-<p><strong>反序列化：</strong>把磁盘文件中的对象数据或者把网络节点上的对象数据，恢复成Java对象模型的过程。也就是将在序列化过程中所生成的二进制数据流转换成数据结构或者对象的过程</p>
-<p><strong>使用场景</strong></p>
-<p>①、在分布式系统中，此时需要把对象在网络上传输，就得把对象数据转换为二进制形式，需要共享的数据的 JavaBean 对象，都得做序列化。</p>
-<p>②、服务器钝化：如果服务器发现某些对象好久没活动了，那么服务器就会把这些内存中的对象持久化在本地磁盘文件中（Java对象转换为二进制文件）；如果服务器发现某些对象需要活动时，先去内存中寻找，找不到再去磁盘文件中反序列化我们的对象数据，恢复成 Java 对象。这样能节省服务器内存。</p>
-<p><strong>序列化的好处</strong></p>
-<ul>
-<li>描述数据的传输格式，这样可以方便自己组织数据传输格式，以至于避免一些麻烦及错误</li>
-<li>如果是跨平台的序列化，则发送方序列化后，接收方可以用任何其支持的平台反序列化成相应的版本，比如Java序列化后， 用.net、phython等反序列化</li>
-<li>利用序列化实现远程通信，即在网络上传送对象的字节序列。</li>
-<li>为了解决对象流读写操作时可能引发的问题(如果不进行序列化,可能会存在数据乱序的问题)</li>
-<li>实现了数据的持久化，通过序列化可以把数据永久地保存到硬盘上（通常存放在文件里），</li>
-<li>序列化除了能够实现对象的持久化之外，还能够用于对象的深度克隆</li>
-</ul>
-<h2 id="new-Integer-和-Integer-valueOf-的区别是什么？"><a href="#new-Integer-和-Integer-valueOf-的区别是什么？" class="headerlink" title="new Integer 和 Integer.valueOf 的区别是什么？"></a>new Integer 和 Integer.valueOf 的区别是什么？</h2><p>（1）不管是new创建的Integer对象，还是通过直接赋值Int值创建的Integer对象，它们与Int类型变量通过“==”进行比较时都会自动拆箱变成Int类型，所以Integer对象和Int变量比较的是内容大小。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">100</span>;<span class="comment">//等价于b=Integer.valueOf(100);</span></span><br><span class="line">        <span class="type">Integer</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">100</span>);</span><br><span class="line">        System.out.println(a == b);<span class="comment">//true</span></span><br><span class="line">        System.out.println(a == c);<span class="comment">//true</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p>（2）new创建的Integer对象和直接赋Int值创建的Integer对象使用==比较的是它们的内存地址。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">100</span>;<span class="comment">//等价于b=Integer.valueOf(100);</span></span><br><span class="line">        <span class="type">Integer</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">100</span>);</span><br><span class="line">        System.out.println(b == c);<span class="comment">//false</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>（3）赋Int值创建的Integer对象比较：<br>当Int值在-128-127之间时，两个Integer变量引用的是IntegerCache中的同一个对象，内存地址相同，因此的 == ,结果为true；当Int值不在以上范围时，两个Integer对象都是通过new创建的，内存地址不同，因此 == 的结果为false</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">200</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">200</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">100</span>);</span><br><span class="line">        System.out.println(a == b);<span class="comment">//true</span></span><br><span class="line">        System.out.println(c == d);<span class="comment">//false</span></span><br><span class="line">        System.out.println(a == f);<span class="comment">//false</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<p>经典面试题</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">49</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">49</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">c</span> <span class="operator">=</span> Integer.valueOf(<span class="number">49</span>);</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">49</span>);</span><br><span class="line">        System.out.println(a == b);<span class="comment">//true</span></span><br><span class="line">        System.out.println(a == c);<span class="comment">//true</span></span><br><span class="line">        System.out.println(b == c);<span class="comment">//true</span></span><br><span class="line">        System.out.println(c == d);<span class="comment">//false</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Java-有几种基本数据类型，分别占多少字节？"><a href="#Java-有几种基本数据类型，分别占多少字节？" class="headerlink" title="Java 有几种基本数据类型，分别占多少字节？"></a>Java 有几种基本数据类型，分别占多少字节？</h2><table>
-<thead>
-<tr>
-<th>boolean</th>
-<th>1 bit，不到一个字节</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>byte</td>
-<td>8 bit，1字节</td>
-</tr>
-<tr>
-<td>short</td>
-<td>16 bit，2字节</td>
-</tr>
-<tr>
-<td>char</td>
-<td>16 bit，2字节</td>
-</tr>
-<tr>
-<td>int</td>
-<td>32 bit，4字节</td>
-</tr>
-<tr>
-<td>float</td>
-<td>32 bit，4字节</td>
-</tr>
-<tr>
-<td>long</td>
-<td>64 bit，8字节</td>
-</tr>
-<tr>
-<td>double</td>
-<td>64 bit，8字节</td>
-</tr>
-</tbody></table>
-<h2 id="有哪些解决哈希表冲突的方式？"><a href="#有哪些解决哈希表冲突的方式？" class="headerlink" title="有哪些解决哈希表冲突的方式？"></a>有哪些解决哈希表冲突的方式？</h2><p>1、开放定址法：我们在遇到哈希冲突时，去寻找一个新的空闲的哈希地址。</p>
-<p>（1）线性探测法</p>
-<p>（2）平方探测法</p>
-<p> 2、再哈希法：同时构造多个不同的哈希函数，等发生哈希冲突时就使用第二个、第三个……等其他的哈希函数计算地址，直到不发生冲突为止。虽然不易发生聚集，但是增加了计算时间。</p>
-<p>3、链地址法：将所有哈希地址相同的记录都链接在同一链表中。</p>
-<h2 id="简述封装、继承、多态的特性及使用场"><a href="#简述封装、继承、多态的特性及使用场" class="headerlink" title="简述封装、继承、多态的特性及使用场"></a>简述封装、继承、多态的特性及使用场</h2><p>面向对象三大特性：封装，继承，多态 </p>
-<p>1、封装就是将类的信息隐藏在类内部，不允许外部程序直接访问，而是通过该类的方法实现对隐藏信息 的操作和访问。 良好的封装能够减少耦合。</p>
-<p> 2、继承是从已有的类中派生出新的类，新的类继承父类的属性和行为，并能扩展新的能力，大大增加程序的重用性和易维护性。在Java中是单继承的，也就是说一个子类只有一个父类。 </p>
-<p>3、多态是同一个行为具有多个不同表现形式的能力。在不修改程序代码的情况下改变程序运行时绑定的代码。实现多态的三要素：继承、重写、父类引用指向子类对象。 </p>
-<p>静态多态性：通过重载实现，相同的方法有不同的參数列表，可以根据参数的不同，做出不同的处 理。</p>
-<p> 动态多态性：在子类中重写父类的方法。运行期间判断所引用对象的实际类型，根据其实际类型调 用相应的方法。</p>
-<h2 id="Java-中-int-的最大值是多少？"><a href="#Java-中-int-的最大值是多少？" class="headerlink" title="Java 中 int 的最大值是多少？"></a>Java 中 int 的最大值是多少？</h2><p>java int 类整数的最大值是 2 的 31 次方 - 1 = <strong>2147483648 - 1</strong> = <strong>2147483647</strong>(21亿多)</p>
-<h2 id="Java-异常有哪些类型？"><a href="#Java-异常有哪些类型？" class="headerlink" title="Java 异常有哪些类型？"></a>Java 异常有哪些类型？</h2><p><img src="https://yichen-blog.oss-cn-beijing.aliyuncs.com//note-image/2023/07/16/20230716-204340.png" alt="javase-22"></p>
-<p>常见的RuntimeException： </p>
-<ul>
-<li><p><code>ClassCastException</code> //类型转换异常 </p>
-</li>
-<li><p><code>IndexOutOfBoundsException</code> //数组越界异常 </p>
-</li>
-<li><p><code>NullPointerException</code> //空指针 </p>
-</li>
-<li><p><code>ArrayStoreException</code> //数组存储异常 </p>
-</li>
-<li><p><code>NumberFormatException</code> //数字格式化异常 </p>
-</li>
-<li><p><code>ArithmeticException </code>//数学运算异常</p>
-</li>
-</ul>
-<p>checked Exception： </p>
-<ul>
-<li><p><code>NoSuchFieldException</code> //反射异常，没有对应的字段 </p>
-</li>
-<li><p><code>ClassNotFoundException</code> //类没有找到异常 </p>
-</li>
-<li><p><code>IllegalAccessException</code> //安全权限异常，可能是反射时调用了private方法</p>
-</li>
-</ul>
 
       
     </div>
-    <div class="article-footer">
+<!--     <div class="article-footer">
       <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     
@@ -622,7 +479,7 @@
 </div> -->
 
 
-    </div>
+    </div> -->
   </article>
   
     
