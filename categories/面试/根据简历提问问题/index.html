@@ -374,10 +374,10 @@
 <p>在进行可视化展示页面的时候，我主要使用了Vue前端框架，HTML/CSS以及JavaScript</p>
 	    
 <h2 id="GCN和TransE在项目中的应用"><a href="#GCN和TransE在项目中的应用" class="headerlink" title="GCN和TransE在项目中的应用"></a>在基于攻击知识图谱的网络攻击场景重构及推理项目中，你使用了图卷积神经网络和TransE模型。能否详细介绍一下这两个模型在你的项目中的应用，以及它们是如何帮助攻击预测和推理的？</h2>
-<p><strong>在可视化展示方面采用的工具和技术</strong></p>
-<p>foreach和for都可以修改元素里面的属性</p>
-<p>foreach会引发并发修改异常ConcurrentModificationException</p>
-
+<p><strong>GCN和TransE在项目中的应用</strong></p>
+<p>GCN主要用来对攻击场景进行分类。我们用GCN训练数据，在训练前首先对数据提取特征词，然后将特征词整理形成特征矩阵X和邻接矩阵A。特征矩阵的每一行表示一个CVE实例描述，每一列表示一个特征词，特征词只有0和1两个取值。取1表示该特征词在这条CVE描述中，取0表示不在描述文本中。邻接矩阵A表示节点之间的关系。</p>
+<p><strong>如何进行攻击预测和推理</strong></p>
+<p>GCN分类分为了七种攻击场景类型。攻击预测推理使用的TransE模型，在这一部分中</p>	    
 <!-- <h2 id="foreach底层原理"><a href="#foreach底层原理" class="headerlink" title="foreach底层原理"></a>foreach底层原理</h2><p><strong>数组</strong></p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs=  <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(String str : strs){</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
