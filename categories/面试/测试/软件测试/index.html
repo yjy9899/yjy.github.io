@@ -1,1 +1,609 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>面试-软件测试 | Jayda</title>
+  <meta name="description" content="在基于大数据的就业岗位分析预测平台项目中，你提到了使用爬虫技术和Web开发技术。具体来说，你是如何设计和实现爬虫来获取职业信息的？在可视化展示方面，你采用了什么技术和工具？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试-软件测试">
+<meta property="og:url" content="https://yjy9899.github.io/categories/面试/测试/软件测试/index.html">
+<meta property="og:site_name" content="Jayda">
+<meta property="og:description" content="在基于大数据的就业岗位分析预测平台项目中，你提到了使用爬虫技术和Web开发技术。具体来说，你是如何设计和实现爬虫来获取职业信息的？在可视化展示方面，你采用了什么技术和工具？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yichen-blog.oss-cn-beijing.aliyuncs.com//note-image/2023/07/16/20230716-214622.jpeg">
+<meta property="og:image" content="https://yichen-blog.oss-cn-beijing.aliyuncs.com//note-image/2023/07/16/20230716-204340.png">
+<meta property="article:published_time" content="2022-11-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-17T13:41:27.794Z">
+<meta property="article:author" content="Jayda">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="总结">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yichen-blog.oss-cn-beijing.aliyuncs.com//note-image/2023/07/16/20230716-214622.jpeg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://yjy9899.github.io/categories/面试/根据简历提问问题/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Jayda" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="" target="_blank">
+          <img class="img-circle img-rotate" src="/images/headimage.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Jayda</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">计算机</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 长春，中国</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+<!--         <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li> -->
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+<!--         <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+         -->
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ElasticSearch/">ElasticSearch</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/" rel="tag">aop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springcloud/" rel="tag">springcloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springsecurity/" rel="tag">springsecurity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/" rel="tag">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/token/" rel="tag">token</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+<!--   <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ElasticSearch/" style="font-size: 13px;">ElasticSearch</a> <a href="/tags/aop/" style="font-size: 13px;">aop</a> <a href="/tags/docker/" style="font-size: 13px;">docker</a> <a href="/tags/go/" style="font-size: 13px;">go</a> <a href="/tags/java/" style="font-size: 13.86px;">java</a> <a href="/tags/javascript/" style="font-size: 13px;">javascript</a> <a href="/tags/mybatis/" style="font-size: 13px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.57px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.71px;">redis</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springcloud/" style="font-size: 13px;">springcloud</a> <a href="/tags/springsecurity/" style="font-size: 13px;">springsecurity</a> <a href="/tags/tcp/" style="font-size: 13px;">tcp</a> <a href="/tags/token/" style="font-size: 13px;">token</a> <a href="/tags/vue/" style="font-size: 13.43px;">vue</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.14px;">总结</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.29px;">操作系统</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13px;">面试</a>
+    </div>
+  </div> -->
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">十二月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+<!--   <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/01/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="title">分布式事务</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-01T08:53:49.259Z" itemprop="datePublished">2023-09-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/07/28/java/Java%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="title">Java线程模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-07-28T13:59:18.661Z" itemprop="datePublished">2023-07-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/05/19/java/AQS/" class="title">AQS详解</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-05-18T16:00:00.000Z" itemprop="datePublished">2023-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/go/">go</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/05/03/go/new%E4%B8%8Emake%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E5%8C%BA%E5%88%AB/" class="title">new与make关键字的区别</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-05-02T16:00:00.000Z" itemprop="datePublished">2023-05-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/15/java/CAS/" class="title">CAS</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-14T16:00:00.000Z" itemprop="datePublished">2023-04-15</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+   -->
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-面试/根据简历提问问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+    简历提问
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/categories/面试/根据简历提问问题/index.html/" class="article-date">
+	  <time datetime="2022-11-18T16:00:00.000Z" itemprop="datePublished">2022-11-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/面试/">面试</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/java/" rel="tag">简历</a>, <a class="article-tag-link-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a>, <a class="article-tag-link-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/11/19/%E9%9D%A2%E8%AF%95/java%E6%80%BB%E7%BB%93/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 18(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+<h2 id="爬虫获取职业信息"><a href="#爬虫获取职业信息" class="headerlink" title="爬虫获取职业信息"></a>在基于大数据的就业岗位分析预测平台项目中，你提到了使用爬虫技术和Web开发技术。具体来说，你是如何设计和实现爬虫来获取职业信息的？在可视化展示方面，你采用了什么技术和工具？</h2>
+<p>1.确定目标：网站的URL，要爬取的内容（职业名称，职业薪资，公司名称，公司人数），爬取工具（BeautifulSoup）</p>
+<p>2.确定需要抓取的数据在页面中的位置，获取网页的HTML代码，使用request库方法（get/read）获取</p>
+<p>3.使用工具解析HTML页面</p>
+<p>4.设置爬虫速率，避免对服务器造成过大的负载</p>
+<p>5.爬取数据，使用BeautifulSoup的find/find_all方法。<code>list_soup = soup.find('div', {'class': 'mod book-list'})</code>（找到所有class为mod book-list的div元素）</p>
+<p><strong>在可视化展示方面采用的工具和技术</strong></p>
+<p>在进行可视化展示页面的时候，我主要使用了Vue前端框架，HTML/CSS以及JavaScript</p>
+	    
+<h2 id="GCN和TransE在项目中的应用"><a href="#GCN和TransE在项目中的应用" class="headerlink" title="GCN和TransE在项目中的应用"></a>在基于攻击知识图谱的网络攻击场景重构及推理项目中，你使用了图卷积神经网络和TransE模型。能否详细介绍一下这两个模型在你的项目中的应用，以及它们是如何帮助攻击预测和推理的？</h2>
+<p><strong>GCN和TransE在项目中的应用</strong></p>
+<ul>
+<li>GCN主要用来对攻击场景进行分类。我们用GCN训练数据，在训练前首先对数据提取特征词，然后将特征词整理形成特征矩阵X和邻接矩阵A。特征矩阵的每一行表示一个CVE实例描述，每一列表示一个特征词，特征词只有0和1两个取值。取1表示该特征词在这条CVE描述中，取0表示不在描述文本中。邻接矩阵A表示节点之间的关系。</li>
+<li>TransE模型主要用于后续的预测推理，该部分利用TransE模型对实体与特征之间关系的三元组进行推理分析，发现其中隐藏的模式和规律，预测推理该三元组是否有存在的可能性，然后根据得分推断出新的CVE条目属于哪个类型的攻击场景图。</li>
+</ul>
+<p><strong>如何进行攻击预测和推理</strong></p>
+<p>GCN分类分为了七种攻击场景类型。攻击预测推理使用的TransE模型，在这一部分中主要是判断新输入的漏洞数据条目属于哪一个攻击类型。首先提取新输入数据的特征词，然后从每个类型随机选取一个特征词与新提取的特征词构建三元组，之后利用TransE模型对这些三元组计算得分，找出得分最小的三元组，得分最小说明该三元组中的头实体和尾实体之间有很大的事实存在可能性，然后去溯源尾实体所在的漏洞数据条目APT-1，由此可以说明头实体和APT-1之间存在事实可能性，进而推出新漏洞条目与APT-1之间有关系，因此可以推理出新漏洞数据条目属于APT-1所在的攻击场景类型。</p>	    
+<!-- <h2 id="foreach底层原理"><a href="#foreach底层原理" class="headerlink" title="foreach底层原理"></a>foreach底层原理</h2><p><strong>数组</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs=  <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(String str : strs){</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>编译后</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></span><br><span class="line"><span class="comment">// (powered by Fernflower decompiler)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">package</span> sdu.edu.Test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        String[] var2 = strs;</span><br><span class="line">        <span class="type">int</span> <span class="variable">var3</span> <span class="operator">=</span> strs.length;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">var4</span> <span class="operator">=</span> <span class="number">0</span>; var4 &lt; var3; ++var4) {</span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> var2[var4];</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><strong>集合</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> a : list){</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>编译后</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">var2</span> <span class="operator">=</span> list.iterator();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (Integer)var2.next();</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+ -->
+
+<h2 id="使用技术栈时的挑战和克服"><a href="#使用技术栈时的挑战和克服" class="headerlink" title="使用技术栈时的挑战和克服"></a>在两个项目中，你都涉及到了不同的技术栈，包括Python、Java、MySQL、Tomcat等。在处理这些技术时，你遇到了哪些挑战，又是如何克服的？</h2>
+<p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
+<p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
+<p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
+	    
+<h2 id="如何处理文本数据"><a href="#如何处理文本数据" class="headerlink" title="如何处理文本数据"></a>你提到了使用Jieba分词技术和自然语言处理技术来从CVE描述字段中提取攻击有关的实体。具体来说，你是如何处理这个文本数据的？</h2>
+<ul>
+<li>数据处理总共包含五个步骤，分别是数据清洗、数据归一化、实体识别、特征提取和关系提取。</li>
+<li>数据清洗：因为CVE漏洞数据中，有些信息是本实验用不到的，比如数据的Status、Reference、Comments等字段，还有一些是没有公开或者被撤销了的CVE条目，未公开数据条目的描述字段以“**”开头。在数据清洗的过程中，如果数据描述字段不是以“**”开头，则将该条数据保存到文件中，以供下一阶段使用，否则直接跳过不做处理。</li>
+<li>数据归一化：该步骤主要是采用统一的标准对CVE数据进行命名，例如，CVE-2006-2830经过归一化步骤后变为20062830，将符号去掉，便于后续模型的读取和识别。</li>
+<li>实体识别：这部分使用的是spaCy库和分词技术，旨在从描述文本中提取出漏洞实体。</li>
+<li>特征提取：实体识别后需要去除停用词，然后统计漏洞实体的词频，将词频较高的作为特征词。</li>
+<li>关系提取：如果某个数据实体中有该特征词，则说该数据实体与特征词之间有关系</li>
+</ul>
+
+<h2 id="如何确保稳定性和准确性"><a href="#如何确保稳定性和准确性" class="headerlink" title="如何确保稳定性和准确性"></a>作为基于大数据的就业岗位分析预测平台的测试开发人员，你在需求分析评审和测试方面扮演了什么样的角色？能分享一下你是如何确保项目的准确性和稳定性的？</h2>
+<ul>
+<li>需求分析，明确项目的目标。项目启动阶段，需要先制定项目的需求分析，明确项目的目标和任务，确定用户需求和功能需求。这两个需求也是成功的标准。</li>
+<li>项目评估，识别潜在的问题。</li>
+</ul>
+<!-- <h2 id="Java创建对象的方式"><a href="#Java创建对象的方式" class="headerlink" title="Java创建对象的方式"></a>Java创建对象的方式</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.通过new申请对象空间（堆内存）</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.通过Class类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person) clazz.newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通过Constructor类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">claqq</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Constructor</span> <span class="variable">con</span> <span class="operator">=</span> claqq.getConstructor(String.class);</span><br><span class="line"><span class="type">Person</span> <span class="variable">per</span> <span class="operator">=</span> (Person) con.newInstance(<span class="string">"zzt"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.通过Object类中的clone()方法</span></span><br><span class="line"><span class="comment">//类对象，实现实现Cloneable接口</span></span><br><span class="line"><span class="comment">//不会执行构造方法</span></span><br><span class="line"><span class="comment">//设计模式  ------&gt;Prototype原型模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//5.通过对象的反序列化</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(fileInputStream);</span><br><span class="line"><span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> (Person) ois.readObject();</span><br></pre></td></tr></tbody></table></figure> -->
+
+<h2 id="项目遇到的最大挑战以及如何解决"><a href="#项目遇到的最大挑战以及如何解决" class="headerlink" title="项目遇到的最大挑战以及如何解决"></a>在项目中肯定会遇到一些挑战，可以分享一下你在项目中面对的最大挑战是什么，以及你是如何解决的吗？</h2>
+<p>这个项目涉及到新的技术，比如知识嵌入，在这个项目中用到了一个知识嵌入的知识库ampligraph。这个知识库中有我们项目用到的知识嵌入模型TransE。这个模型对于我们来说也是一个新技术。这些是我们需要学习和克服的技术难题。这是项目中遇到的最大挑战。</p>
+<p>首先明确这个项目中用到的技术，寻找收集相关文献以及demo。其次，根据文献学习基础理论，然后调试demo，使之适应自己项目例子。再者，根据项目去编码调试。最后经过上述努力，最后学会了这些技术，并成功应用到了项目中。</p>
+
+<h2 id="深入还是广泛学习技术"><a href="#深入还是广泛学习技术" class="headerlink" title="深入还是广泛学习技术"></a>你在项目中使用了多种技术，涉及到爬虫、Web开发、图卷积神经网络等多个领域。你认为自己更倾向于深入某一领域还是保持广泛的技术涉猎？</h2>
+<p>我个人更偏向保持广泛的技术涉猎。</p>
+<p>1.保持对多个领域的涉猎可能使我适应性更强，能够快速适应不同项目和工作环境。这对于在技术日新月异的行业中保持竞争力非常重要。</p>
+<p>2.了解多个领域可能会激发创新思维，能够将一个领域的技术应用到另一个领域，创造出独特的解决方案。</p>
+
+<h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>可以分享一下你在研究生期间的研究方向或者深入学习的领域吗？</h2>
+<p>我的研究主要专注于网络安全方向，同时还涉及到了深度学习、自然语言处理以及知识图谱。</p>
+<p>就拿我参与过的项目来说吧，“基于攻击知识图谱的网络攻击场景重构及推理”这个项目是网络安全方向的，我们利用深度学习模型GCN对CVE漏洞数据进行分类，然后利用TransE模型对CVE条目进行匹配推理，找出潜在的关系通过知识图谱嵌入和知识图谱补全技术对新输入的CVE条目进行知识补全，补全其中确实的知识要素。之后经过不断的补全迭代重构出一个完整的攻击场景。实验结果表明该技术可以揭示潜在的攻击路径和攻击要素。</p>
+<p>在这个项目中，我深入理解了图卷积神经网络的原理，并掌握了利用NLP技术处理文本数据的技能，同时还掌握了知识图谱构建的技能。在深度学习领域和数据处理方面积累了一定的经验。</p>
+
+
+      
+    </div>
+<!--     <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://yichenfirst.github.io/2022/11/19/%E9%9D%A2%E8%AF%95/java%E6%80%BB%E7%BB%93/" title="java总结" target="_blank" rel="external">https://yichenfirst.github.io/2022/11/19/面试/java总结/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="" target="_blank"><span class="text-dark">逸辰</span><small class="ml-1x">后端开发</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div> -->
+  </article>
+  
+    
+<!--   <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section> -->
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/12/03/spring/spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" title="spring源码编译"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/11/05/docker/Docker%E7%AC%94%E8%AE%B0/" title="Docker笔记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+<!--   
+  Button trigger modal -->
+<!--   <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button> -->
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+<!--   <div class="bar-right">
+    
+  </div> -->
+  </div>
+</nav>
+  
+<!-- Modal -->
+
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        &copy; 2024 Jayda
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
