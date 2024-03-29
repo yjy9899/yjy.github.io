@@ -366,15 +366,17 @@
       
 <h2 id="SSM框架介绍"><a href="#SSM框架介绍" class="headerlink" title="SSM框架介绍"></a>SSM框架介绍</h2>
 <p>1.SSM框架是spring、spring MVC 、和mybatis框架的整合</p>
-<p>spring、spring MVC 、和mybatis框架的整合</p>    
-<p>3.标准的SSM框架有四层，分别是dao层（mapper），service层，controller层和View层。</p>
-<p>3.使用工具解析HTML页面</p>
-<p>4.设置爬虫速率，避免对服务器造成过大的负载</p>
-<p>5.爬取数据，使用BeautifulSoup的find/find_all方法。<code>list_soup = soup.find('div', {'class': 'mod book-list'})</code>（找到所有class为mod book-list的div元素）</p>
-<p><strong>在可视化展示方面采用的工具和技术</strong></p>
-<p>在进行可视化展示页面的时候，我主要使用了Vue前端框架，HTML/CSS以及JavaScript</p>
+<p>spring:实现业务对象管理；spring MVC：页面的跳转请求和对具体的视图解析，而处理不了的请求则交给tomcat服务器来处理；mybatis：数据对象持久话引擎</p>    
+<p>2.标准的SSM框架有四层，分别是dao层（mapper），service层，controller层和View层。</p>
+<ul>
+<li>持久层/dao层（mapper）层:主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此。定义接口的实现类</li>
+<li>业务层/Service层:主要负责业务模块的逻辑应用设计。业务逻辑层的实现具体要调用到自己已经定义好的Dao的接口上。建立好Dao之后再建立service层，service层又要在controller层之下，因为既要调用Dao层的接口又要提供接口给controller层。每个模型都有一个service接口，每个接口分别封装各自的业务处理的方法。</li>
+<li>表现层/Controller层（Handler层）:负责具体的业务模块流程的控制。</li>
+<li>View层:主要负责前台jsp页面的表示。</li>
+</ul>
+<p>3.DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，适合大项目的开发，Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。</p>
 	    
-<h2 id="GCN和TransE在项目中的应用"><a href="#GCN和TransE在项目中的应用" class="headerlink" title="GCN和TransE在项目中的应用"></a>在基于攻击知识图谱的网络攻击场景重构及推理项目中，你使用了图卷积神经网络和TransE模型。能否详细介绍一下这两个模型在你的项目中的应用，以及它们是如何帮助攻击预测和推理的？</h2>
+<h2 id="Spring介绍"><a href="#Spring介绍" class="headerlink" title="Spring介绍"></a>Spring介绍</h2>
 <p><strong>GCN和TransE在项目中的应用</strong></p>
 <ul>
 <li>GCN主要用来对攻击场景进行分类。我们用GCN训练数据，在训练前首先对数据提取特征词，然后将特征词整理形成特征矩阵X和邻接矩阵A。特征矩阵的每一行表示一个CVE实例描述，每一列表示一个特征词，特征词只有0和1两个取值。取1表示该特征词在这条CVE描述中，取0表示不在描述文本中。邻接矩阵A表示节点之间的关系。</li>
@@ -397,12 +399,12 @@
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">var2</span> <span class="operator">=</span> list.iterator();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (Integer)var2.next();</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
  -->
 
-<h2 id="使用技术栈时的挑战和克服"><a href="#使用技术栈时的挑战和克服" class="headerlink" title="使用技术栈时的挑战和克服"></a>在两个项目中，你都涉及到了不同的技术栈，包括Python、Java、MySQL、Tomcat等。在处理这些技术时，你遇到了哪些挑战，又是如何克服的？</h2>
+<h2 id="Spring MVC介绍"><a href="#Spring MVC介绍" class="headerlink" title="Spring MVC介绍"></a>Spring MVC介绍</h2>
 <p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
 <p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
 <p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
 	    
-<h2 id="如何处理文本数据"><a href="#如何处理文本数据" class="headerlink" title="如何处理文本数据"></a>你提到了使用Jieba分词技术和自然语言处理技术来从CVE描述字段中提取攻击有关的实体。具体来说，你是如何处理这个文本数据的？</h2>
+<h2 id="Mybatis介绍"><a href="#Mybatis介绍" class="headerlink" title="Mybatis介绍"></a>Mybatis介绍</h2>
 <ul>
 <li>数据处理总共包含五个步骤，分别是数据清洗、数据归一化、实体识别、特征提取和关系提取。</li>
 <li>数据清洗：因为CVE漏洞数据中，有些信息是本实验用不到的，比如数据的Status、Reference、Comments等字段，还有一些是没有公开或者被撤销了的CVE条目，未公开数据条目的描述字段以“**”开头。在数据清洗的过程中，如果数据描述字段不是以“**”开头，则将该条数据保存到文件中，以供下一阶段使用，否则直接跳过不做处理。</li>
