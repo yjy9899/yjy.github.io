@@ -369,8 +369,12 @@
 <p>spring:实现业务对象管理;Spring MVC:页面的跳转请求和对具体的视图解析，而处理不了的请求则交给tomcat服务器来处理。;Mybatis:数据对象的持久化引擎。</p>
 <p>2.标准的SSM框架有四层，分别是dao层（mapper），service层，controller层和View层。</p>
 <ul>
-<li>持久层/dao层（mapper）层:</li>
+<li>持久层/dao层（mapper）层:主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此。定义接口的实现类。</li>
+<li>业务层/Service层:主要负责业务模块的逻辑应用设计。业务逻辑层的实现具体要调用到自己已经定义好的Dao的接口上，建立好Dao之后再建立service层，service层又要在controller层之下，因为既要调用Dao层的接口又要提供接口给controller层。每个模型都有一个service接口，每个接口分别封装各自的业务处理的方法。</li>
+<li>表现层/Controller层（Handler层）:负责具体的业务模块流程的控制。</li>
+<li>View层:主要负责前台jsp页面的表示。</li>
 </ul>
+<p>3.DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，这样的一种模式在开发大项目的过程中尤其有优势，Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。</p>
 <h2 id="SpringBoot框架特性或优点"><a href="#SpringBoot框架特性或优点" class="headerlink" title="SpringBoot框架特性或优点"></a>SpringBoot框架特性或优点</h2>
 <!-- <p><strong>GCN和TransE在项目中的应用</strong></p> -->
 <ul>
