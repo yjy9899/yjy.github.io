@@ -317,7 +317,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-    SpringBoot框架
+    SSM框架
     </h1>
   
 
@@ -382,33 +382,25 @@
 <p>2.Spring的核心框架</p>
 <ul>
 <li>IOC（控制反转）：把原来创建对象的过程交给了Spring容器进行控制和管理。</li>
-	<p>IOC重点：在系统运行中，动态的向某个对象提供它所需要的其他对象。这一点是通过DI（依赖注入）来实现。DI使得对象之间的耦合度降低，提高了代码的可维护性和可测试性。Spring提供了三种常见的依赖注入方式：构造函数注入、Setter方法注入和字段注入</p>
-<li>AOP（面向切面编程）：不修改源代码进行功能增强。</li>
-<li>大量的自动配置，简化开发</li>
+<p>IOC重点：在系统运行中，动态的向某个对象提供它所需要的其他对象。这一点是通过DI（依赖注入）来实现。DI使得对象之间的耦合度降低，提高了代码的可维护性和可测试性。Spring提供了三种常见的依赖注入方式：构造函数注入、Setter方法注入和字段注入</p>
+<p>它可以装载bean，也是一种降低对象之间耦合关系的设计思想。（比如租房子。以前租房子需要一个房子一个房子找，费时费力，然后现在加入一个房屋中介，把你需要的房型告诉中介，就可以直接选到需要的房子，中介就相当于spring容器。）</p>
+<li>AOP（面向切面编程）：面向对象开发的一种补充，它允许开发人员在不改变原来模型的基础上动态的修改模型以满足新的需求，即不修改源代码进行功能增强。通常情况下，与业务无关的逻辑代码可以通过AOP实现，例如：日志、事务管理、权限控制等。在需要进行动态扩展的方法上采用AOP的五大通知：前置、环绕、后置、异常、最终，添加与业务无关的逻辑，从而完成某个功能。</li>
+<p>AOP可以将一些横切关注点（如日志、事务、安全等）从应用程序的核心逻辑中抽离出来，使得代码更加模块化和可维护。Spring AOP基于代理模式实现，可以在运行时动态地将横切逻辑织入到目标对象的方法中。</p>
 </ul>
-<!-- <p><strong>GCN和TransE在项目中的应用</strong></p> -->
+
+<p>4.Spring的优点</p>
 <ul>
-<li>快速创建独立的Spring应用</li>
-<li>直接嵌入应用服务器，如Tomcat,jetty,undertow,不需要去部署war包</li>
-<li>大量的自动配置，简化开发</li>
+<li>轻量级和非侵入性：Spring框架是一个轻量级的框架，它不需要大量的依赖库和容器。它不会强制你的应用程序继承特定的类或实现特定的接口，因此可以与现有的应用程序无缝集成。</li>
+<li>控制反转（IoC）和依赖注入（DI）：Spring采用了控制反转和依赖注入的设计模式，使得对象之间的依赖关系更加松散，并且更容易管理。这种设计模式有助于提高代码的可测试性、可维护性和可扩展性。</li>
+<li>面向切面编程（AOP）：Spring提供了AOP支持，使得开发者可以将横切关注点（如事务管理、日志、安全等）从核心业务逻辑中分离出来，从而实现更好的模块化和可维护性。</li>
+<li>方便和其他框架进行整合:Spring框架提供了广泛的集成支持，可以与各种其他框架和技术（如Hibernate、JPA、MyBatis、Struts、JSF等）无缝集成.</li>
 </ul>
 <!-- <h2 id="foreach底层原理"><a href="#foreach底层原理" class="headerlink" title="foreach底层原理"></a>foreach底层原理</h2><p><strong>数组</strong></p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs=  <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(String str : strs){</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>编译后</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></span><br><span class="line"><span class="comment">// (powered by Fernflower decompiler)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">package</span> sdu.edu.Test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        String[] var2 = strs;</span><br><span class="line">        <span class="type">int</span> <span class="variable">var3</span> <span class="operator">=</span> strs.length;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">var4</span> <span class="operator">=</span> <span class="number">0</span>; var4 &lt; var3; ++var4) {</span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> var2[var4];</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<p><strong>集合</strong></p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> a : list){</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<p>编译后</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">var2</span> <span class="operator">=</span> list.iterator();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (Integer)var2.next();</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
  -->
 
 <h2 id="Spring MVC介绍"><a href="#Spring MVC介绍" class="headerlink" title="Spring MVC介绍"></a>Spring MVC介绍</h2>
-<p>提供两种文件格式的全局配置文件，并且文件名是固定的，均以application为文件名，格式分别是application.properties和application.yml的配置文件</p>
+<p>1.SpringMVC是Spring框架的一个模块，用于构建基于MVC（Model-View-Controller）设计模式的Web应用程序。</p>
 <ul>
 <!-- <li>特征提取：实体识别后需要去除停用词，然后统计漏洞实体的词频，将词频较高的作为特征词。</li> -->
 <li>application.yml：这种配置文件是基于YAML语言的文件</li>
