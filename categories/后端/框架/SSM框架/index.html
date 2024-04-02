@@ -401,11 +401,28 @@
 
 <h2 id="Spring MVC介绍"><a href="#Spring MVC介绍" class="headerlink" title="Spring MVC介绍"></a>Spring MVC介绍</h2>
 <p>1.SpringMVC是Spring框架的一个模块，用于构建基于MVC（Model-View-Controller）设计模式的Web应用程序。</p>
-<ul>
-<!-- <li>特征提取：实体识别后需要去除停用词，然后统计漏洞实体的词频，将词频较高的作为特征词。</li> -->
-<li>application.yml：这种配置文件是基于YAML语言的文件</li>
-</ul>
-	    
+<p><strong>2.SpringMVC的工作流程</strong></p>
+<ol style="list-style-type:lower-alpha">
+	<li>用户发送请求至前端控制器DispatcherServlet。</li>
+	<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
+	<li>处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</li>
+	<li>DispatcherServlet调用HandlerAdapter处理器适配器。</li>
+	<li>HandlerAdapter经过适配调用具体的处理器(Controller，也叫后端控制器)。</li>
+	<li>Controller执行完成返回ModelAndView。</li>
+	<li>HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。</li>
+	<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</li>
+	<li>ViewReslover解析后返回具体View。</li>
+	<li>DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。</li>
+	<li>DispatcherServlet响应用户。</li>
+</ol>
+<p><strong>SpringMVC的工作流程-简单版</strong></p>
+<ol style="list-style-type:lower-alpha">
+	<li>用户发送请求至前端控制器DispatcherServlet。</li>
+	<li>DispatcherServlet 根据请求信息调用 HandlerMapping，解析请求对应的 Handler（处理器）。</li>
+	<li>Handler 执行业务逻辑，将处理结果封装为 ModelAndView 对象。</li>
+	<li>DispatcherServlet 调用 ViewResolver 解析 ModelAndView 对象对应的 View（视图）。</li>
+	<li>最终将结果响应给客户端。</li>
+</ol>
 <h2 id="mybatis介绍"><a href="#mybatis介绍" class="headerlink" title="mybatis介绍"></a>mybatis介绍</h2>
 <p><stong>设置理念：约定优于配置</stong></p>
 <p></p>
