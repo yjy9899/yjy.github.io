@@ -375,7 +375,17 @@
 <li>View层:主要负责前台jsp页面的表示。</li>
 </ul>
 <p>3.DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，这样的一种模式在开发大项目的过程中尤其有优势，Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。</p>
-<h2 id="SpringBoot框架特性或优点"><a href="#SpringBoot框架特性或优点" class="headerlink" title="SpringBoot框架特性或优点"></a>SpringBoot框架特性或优点</h2>
+
+<h2 id="Spring介绍"><a href="#Spring介绍" class="headerlink" title="Spring介绍"></a>Spring介绍</h2>
+<p>1.Spring是一个轻量级Java开发框架。它是一个分层的JavaSE/JavaEE 一站式轻量级开源框架，简化Java开发的复杂性。解决的是业务逻辑层和其他各层的松耦合问题，因此它将面向接口的编程思想贯穿整个系统应用。</p>
+<p>2.Spring是一个基本框架，同时提供容器来装载具体的bean对象。没有Spring前，创建对象是用New；有了Spring之后，只需要告诉Spring容器有哪些对象，它会帮我们创建和维护整个对象的生命周期，生态比较完善。</p>
+<p>2.Spring的核心框架</p>
+<ul>
+<li>IOC（控制反转）：把原来创建对象的过程交给了Spring容器进行控制和管理。</li>
+	<p>IOC重点：在系统运行中，动态的向某个对象提供它所需要的其他对象。这一点是通过DI（依赖注入）来实现。DI使得对象之间的耦合度降低，提高了代码的可维护性和可测试性。Spring提供了三种常见的依赖注入方式：构造函数注入、Setter方法注入和字段注入</p>
+<li>AOP（面向切面编程）：不修改源代码进行功能增强。</li>
+<li>大量的自动配置，简化开发</li>
+</ul>
 <!-- <p><strong>GCN和TransE在项目中的应用</strong></p> -->
 <ul>
 <li>快速创建独立的Spring应用</li>
@@ -397,14 +407,14 @@
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">var2</span> <span class="operator">=</span> list.iterator();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (Integer)var2.next();</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
  -->
 
-<h2 id="SpringBoot配置文件的格式"><a href="#SpringBoot配置文件的格式" class="headerlink" title="SpringBoot配置文件的格式"></a>SpringBoot配置文件的格式？它们有什么区别</h2>
+<h2 id="Spring MVC介绍"><a href="#Spring MVC介绍" class="headerlink" title="Spring MVC介绍"></a>Spring MVC介绍</h2>
 <p>提供两种文件格式的全局配置文件，并且文件名是固定的，均以application为文件名，格式分别是application.properties和application.yml的配置文件</p>
 <ul>
 <!-- <li>特征提取：实体识别后需要去除停用词，然后统计漏洞实体的词频，将词频较高的作为特征词。</li> -->
 <li>application.yml：这种配置文件是基于YAML语言的文件</li>
 </ul>
 	    
-<h2 id="SpringBoot设置理念"><a href="#SpringBoot设置理念" class="headerlink" title="SpringBoot设置理念"></a>SpringBoot设置理念</h2>
+<h2 id="mybatis介绍"><a href="#mybatis介绍" class="headerlink" title="mybatis介绍"></a>mybatis介绍</h2>
 <p><stong>设置理念：约定优于配置</stong></p>
 <p></p>
 <!-- <ul>
