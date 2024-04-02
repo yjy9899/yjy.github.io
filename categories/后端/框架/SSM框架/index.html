@@ -427,46 +427,21 @@
 <ul>
 	<li>@RequestMapping：指定请求路径，用于建立请求 URL 和处理请求方法之间的对应关系。可用于类和方法上，用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</li>
 	<li>@RequestBody：用于建立请求 URL 和处理请求方法之间的对应关系。可用于类和方法上，用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</li>
-	<li>@ResponseBody：用于建立请求 URL 和处理请求方法之间的对应关系。可用于类和方法上，用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</li>
+	<li>@ResponseBody：实现将Controller方法返回对象转化为json对象响应给客户。</li>
 	<li>@SessionAttributes:加在类上，指定哪些属性名，或者哪些属性值会被加入到session中</li>
 	<figure class="highlight java"><image src="/images/picture-essay/springmvczhujie.jpg" class="img-rounded w-full" alt=""></image></figure>
 </ul>
 <h2 id="mybatis介绍"><a href="#mybatis介绍" class="headerlink" title="mybatis介绍"></a>mybatis介绍</h2>
-<p><stong>设置理念：约定优于配置</stong></p>
-<p></p>
-<!-- <ul>
-<li>数据处理总共包含五个步骤，分别是数据清洗、数据归一化、实体识别、特征提取和关系提取。</li>
-<li>数据清洗：因为CVE漏洞数据中，有些信息是本实验用不到的，比如数据的Status、Reference、Comments等字段，还有一些是没有公开或者被撤销了的CVE条目，未公开数据条目的描述字段以“**”开头。在数据清洗的过程中，如果数据描述字段不是以“**”开头，则将该条数据保存到文件中，以供下一阶段使用，否则直接跳过不做处理。</li>
-<li>数据归一化：该步骤主要是采用统一的标准对CVE数据进行命名，例如，CVE-2006-2830经过归一化步骤后变为20062830，将符号去掉，便于后续模型的读取和识别。</li>
-<li>实体识别：这部分使用的是spaCy库和分词技术，旨在从描述文本中提取出漏洞实体。</li>
-<li>特征提取：实体识别后需要去除停用词，然后统计漏洞实体的词频，将词频较高的作为特征词。</li>
-<li>关系提取：如果某个数据实体中有该特征词，则说该数据实体与特征词之间有关系</li>
-</ul> -->
+<p>1.是一个用于简化数据库操作的持久层框架，在内部封装了通过JDBC访问数据库的操作,在开发时，只需关注SQL语句本身，不需要花费精力去处理驱动加载，连接创建等繁杂的过程。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集的过程，减少了代码的冗余，减少程序员的操作。</p>
+<p>2.MyBatis的核心思想是将SQL语句与 Java 对象之间的映射关系配置在XML文件或注解中，从而将SQL语句与Java代码分离，这样就可以在不修改代码的情况下直接在配置文件中修改SQL，使得数据持久化操作更加灵活和易于维护。</p>
+<p>3.mybatis的操作都是围绕一个sqlSessionFactory实例展开的。mybatis通过配置文件关联到各实体类的Mapper文件，Mapper文件中配置了每个类对数据库所需进行的sql语句映射。</p>
 
-<h2 id="如何确保稳定性和准确性"><a href="#如何确保稳定性和准确性" class="headerlink" title="如何确保稳定性和准确性"></a>作为基于大数据的就业岗位分析预测平台的测试开发人员，你在需求分析评审和测试方面扮演了什么样的角色？能分享一下你是如何确保项目的准确性和稳定性的？</h2>
-<ul>
-<li>需求分析，明确项目的目标。项目启动阶段，需要先制定项目的需求分析，明确项目的目标和任务，确定用户需求和功能需求。这两个需求也是成功的标准。</li>
-<li>项目评估，识别潜在的问题。</li>
-</ul>
+<p><strong>4.mybatis的缓存</strong></p>
+<p>mybatis的缓存分为一级缓存和二级缓存，一级缓存放在session里面，默认就有。二级缓存存放在命名空间里，使用二级缓存属性类实现Serializable序列化接口，可在它的映射文件中配置。</p>
+
 <!-- <h2 id="Java创建对象的方式"><a href="#Java创建对象的方式" class="headerlink" title="Java创建对象的方式"></a>Java创建对象的方式</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.通过new申请对象空间（堆内存）</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.通过Class类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person) clazz.newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通过Constructor类中的newInstance()方法</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">claqq</span> <span class="operator">=</span> Person.class;</span><br><span class="line"><span class="type">Constructor</span> <span class="variable">con</span> <span class="operator">=</span> claqq.getConstructor(String.class);</span><br><span class="line"><span class="type">Person</span> <span class="variable">per</span> <span class="operator">=</span> (Person) con.newInstance(<span class="string">"zzt"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.通过Object类中的clone()方法</span></span><br><span class="line"><span class="comment">//类对象，实现实现Cloneable接口</span></span><br><span class="line"><span class="comment">//不会执行构造方法</span></span><br><span class="line"><span class="comment">//设计模式  ------&gt;Prototype原型模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//5.通过对象的反序列化</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(fileInputStream);</span><br><span class="line"><span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> (Person) ois.readObject();</span><br></pre></td></tr></tbody></table></figure> -->
 
-<h2 id="项目遇到的最大挑战以及如何解决"><a href="#项目遇到的最大挑战以及如何解决" class="headerlink" title="项目遇到的最大挑战以及如何解决"></a>在项目中肯定会遇到一些挑战，可以分享一下你在项目中面对的最大挑战是什么，以及你是如何解决的吗？</h2>
-<p>这个项目涉及到新的技术，比如知识嵌入，在这个项目中用到了一个知识嵌入的知识库ampligraph。这个知识库中有我们项目用到的知识嵌入模型TransE。这个模型对于我们来说也是一个新技术。这些是我们需要学习和克服的技术难题。这是项目中遇到的最大挑战。</p>
-<p>首先明确这个项目中用到的技术，寻找收集相关文献以及demo。其次，根据文献学习基础理论，然后调试demo，使之适应自己项目例子。再者，根据项目去编码调试。最后经过上述努力，最后学会了这些技术，并成功应用到了项目中。</p>
-
-<h2 id="深入还是广泛学习技术"><a href="#深入还是广泛学习技术" class="headerlink" title="深入还是广泛学习技术"></a>你在项目中使用了多种技术，涉及到爬虫、Web开发、图卷积神经网络等多个领域。你认为自己更倾向于深入某一领域还是保持广泛的技术涉猎？</h2>
-<p>我个人更偏向保持广泛的技术涉猎。</p>
-<p>1.保持对多个领域的涉猎可能使我适应性更强，能够快速适应不同项目和工作环境。这对于在技术日新月异的行业中保持竞争力非常重要。</p>
-<p>2.了解多个领域可能会激发创新思维，能够将一个领域的技术应用到另一个领域，创造出独特的解决方案。</p>
-
-<h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>可以分享一下你在研究生期间的研究方向或者深入学习的领域吗？</h2>
-<p>我的研究主要专注于网络安全方向，同时还涉及到了深度学习、自然语言处理以及知识图谱。</p>
-<p>就拿我参与过的项目来说吧，“基于攻击知识图谱的网络攻击场景重构及推理”这个项目是网络安全方向的，我们利用深度学习模型GCN对CVE漏洞数据进行分类，然后利用TransE模型对CVE条目进行匹配推理，找出潜在的关系通过知识图谱嵌入和知识图谱补全技术对新输入的CVE条目进行知识补全，补全其中确实的知识要素。之后经过不断的补全迭代重构出一个完整的攻击场景。实验结果表明该技术可以揭示潜在的攻击路径和攻击要素。</p>
-<p>在这个项目中，我深入理解了图卷积神经网络的原理，并掌握了利用NLP技术处理文本数据的技能，同时还掌握了知识图谱构建的技能。在深度学习领域和数据处理方面积累了一定的经验。</p>
-
-<h2 id="功能点和测试点"><a href="#功能点和测试点" class="headerlink" title="研究方向"></a>功能点和测试点？</h2>
-<p><strong>什么是功能点和测试点</strong></p>
-<p><strong>如何找功能点和测试点</strong></p>    
+ 
     </div>
 <!--     <div class="article-footer">
       <blockquote class="mt-2x">
