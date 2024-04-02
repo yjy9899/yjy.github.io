@@ -405,13 +405,13 @@
 <ol style="list-style-type:lower-alpha">
 	<li>用户发送请求至前端控制器DispatcherServlet。</li>
 	<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
-	<li>处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</li>
+	<li>处理器映射器找到具体的Handler处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</li>
 	<li>DispatcherServlet调用HandlerAdapter处理器适配器。</li>
 	<li>HandlerAdapter经过适配调用具体的处理器(Controller，也叫后端控制器)。</li>
 	<li>Controller执行完成返回ModelAndView。</li>
 	<li>HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。</li>
 	<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</li>
-	<li>ViewReslover解析后返回具体View。</li>
+	<li>ViewReslover解析后返回具体View视图。</li>
 	<li>DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。</li>
 	<li>DispatcherServlet响应用户。</li>
 </ol>
@@ -423,6 +423,14 @@
 	<li>DispatcherServlet 调用 ViewResolver 解析 ModelAndView 对象对应的 View（视图）。</li>
 	<li>最终将结果响应给客户端。</li>
 </ol>
+<p><strong>3.SpringMVC常用的注解</strong></p>
+<ul>
+	<li>@RequestMapping：指定请求路径，用于建立请求 URL 和处理请求方法之间的对应关系。可用于类和方法上，用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</li>
+	<li>@RequestBody：用于建立请求 URL 和处理请求方法之间的对应关系。可用于类和方法上，用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</li>
+	<li>@ResponseBody：用于建立请求 URL 和处理请求方法之间的对应关系。可用于类和方法上，用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</li>
+	<li>@SessionAttributes:加在类上，指定哪些属性名，或者哪些属性值会被加入到session中</li>
+	<figure class="highlight java"><image src="/images/springmvczhujie.jpg" class="img-rounded w-full" alt=""></image></figure>
+</ul>
 <h2 id="mybatis介绍"><a href="#mybatis介绍" class="headerlink" title="mybatis介绍"></a>mybatis介绍</h2>
 <p><stong>设置理念：约定优于配置</stong></p>
 <p></p>
