@@ -288,19 +288,16 @@
 		<img class="answer-pic-net" src="/images/picture-answer/net-protocol.png" width="500" height="500">
 	</ul>	    
 <h2 id="HTTP和HTTPs的区别"><a href="#HTTP和HTTPs的区别" class="headerlink" title="HTTP和HTTPs的区别"></a>HTTP和HTTPs的区别</h2>
-	<p><strong>GCN和TransE在项目中的应用</strong></p>
 	<ul>
-	<li>GCN主要用来对攻击场景进行分类。我们用GCN训练数据，在训练前首先对数据提取特征词，然后将特征词整理形成特征矩阵X和邻接矩阵A。特征矩阵的每一行表示一个CVE实例描述，每一列表示一个特征词，特征词只有0和1两个取值。取1表示该特征词在这条CVE描述中，取0表示不在描述文本中。邻接矩阵A表示节点之间的关系。</li>
-	<li>TransE模型主要用于后续的预测推理，该部分利用TransE模型对实体与特征之间关系的三元组进行推理分析，发现其中隐藏的模式和规律，预测推理该三元组是否有存在的可能性，然后根据得分推断出新的CVE条目属于哪个类型的攻击场景图。</li>
+	<li><strong>端口号：</strong>HTTP的端口号是80，HTTPS的端口号是443</li>
+	<li><strong>安全性和资源消耗：</strong>
+		<ul>
+			<li>HTTP是基于TCP的;HTTPS是运行在TLS/SSL上的HTTP协议，它相当于HTTP+TLS/SSL。</li>
+			<li>HTTP传输的内容是明文的,客户端和服务器无法验证对方身份；HTTPS发送的内容是经过加密的，发送请求时，客户端和服务器端首先进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。</li>
+			<li>总结：HTTP的安全性没有HTTPS的高，但是HTTPS所耗资源比HTTP多。</li>
+		</ul>	
 	</ul>
-	<p><strong>如何进行攻击预测和推理</strong></p>
-	<p>GCN分类分为了七种攻击场景类型。攻击预测推理使用的TransE模型，在这一部分中主要是判断新输入的漏洞数据条目属于哪一个攻击类型。首先提取新输入数据的特征词，然后从每个类型随机选取一个特征词与新提取的特征词构建三元组，之后利用TransE模型对这些三元组计算得分，找出得分最小的三元组，得分最小说明该三元组中的头实体和尾实体之间有很大的事实存在可能性，然后去溯源尾实体所在的漏洞数据条目APT-1，由此可以说明头实体和APT-1之间存在事实可能性，进而推出新漏洞条目与APT-1之间有关系，因此可以推理出新漏洞数据条目属于APT-1所在的攻击场景类型。</p>	    
-	<!-- <h2 id="foreach底层原理"><a href="#foreach底层原理" class="headerlink" title="foreach底层原理"></a>foreach底层原理</h2><p><strong>数组</strong></p>
-	<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs=  <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(String str : strs){</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-	<p>编译后</p>
-	<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></span><br><span class="line"><span class="comment">// (powered by Fernflower decompiler)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">package</span> sdu.edu.Test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        String[] strs = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">        String[] var2 = strs;</span><br><span class="line">        <span class="type">int</span> <span class="variable">var3</span> <span class="operator">=</span> strs.length;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">var4</span> <span class="operator">=</span> <span class="number">0</span>; var4 &lt; var3; ++var4) {</span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> var2[var4];</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+	
 
 
 <p><strong>集合</strong></p>
