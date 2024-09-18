@@ -300,17 +300,22 @@
 	
 
 
-<p><strong>集合</strong></p>
+<!-- <p><strong>集合</strong></p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> a : list){</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 <p>编译后</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        List&lt;Integer&gt; list = Collections.emptyList();</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">var2</span> <span class="operator">=</span> list.iterator();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (Integer)var2.next();</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
  -->
 
-<h2 id="使用技术栈时的挑战和克服"><a href="#使用技术栈时的挑战和克服" class="headerlink" title="使用技术栈时的挑战和克服"></a>在两个项目中，你都涉及到了不同的技术栈，包括Python、Java、MySQL、Tomcat等。在处理这些技术时，你遇到了哪些挑战，又是如何克服的？</h2>
-<p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
-<p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
-<p>利用Python语言读取不同类型的文件数据，然后对数据进行处理并保存。</p>
+<h2 id="HTTP不保存协议"><a href="#HTTP不保存协议" class="headerlink" title="HTTP不保存协议"></a>HTTP是不保存状态协议，如何保存用户状态？</h2>
+<p>1.不保存状态协议：协议自身不会对请求和响应之间的通信状态进行保存。</p>
+<p>2.保存方法：使用session，通过服务端记录用户状态。给用户创建特定的session，然后标记并跟踪这个用户的状态。</p>
+<ul><p>session和cookie的区别</p>
+	<li><strong>cookie：</strong>服务器给请求贴的身份标签，这个标签包含一些身份信息，比如IP地址；<strong>Session：</strong>代表服务器和客户端一次会话的过程</li>
+	<li>保存范围不同：Cookie保存在客户端，session保存在服务器端</li>
+	<li>有效期不同：Cookie可设置为长时间保存；session时间较短，客户端关闭或者Session超时都会失效。</li>
+	<li>存取方式不同：Cookie只能保存ASCII，Session可以存任意数据类型。</li>
+</ul>
 	    
 <h2 id="如何处理文本数据"><a href="#如何处理文本数据" class="headerlink" title="如何处理文本数据"></a>你提到了使用Jieba分词技术和自然语言处理技术来从CVE描述字段中提取攻击有关的实体。具体来说，你是如何处理这个文本数据的？</h2>
 <ul>
